@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 7th Month Anniversary ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --pink: #ffd6e8;
+      --blue: #d6f0ff;
+      --deep-pink: #ff8fb1;
+      --deep-blue: #7cc7ff;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Perfect Hollow Heart */
+    .heart-container {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      pointer-events: none;
+      opacity: 0;
+      animation: heartPulse 5s infinite ease-in-out;
+    }
+
+    @keyframes heartPulse {
+      0%, 100% { opacity: 0; transform: scale(0.6); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+
+    /* Tulip Grid Placement */
+    .tulip {
+      position: absolute;
+      font-size: 2.2rem;
+      z-index: 1;
+      opacity: 0.7;
+      animation: gentleSway 4s ease-in-out infinite;
+      pointer-events: none;
+      transition: all 0.5s ease;
+    }
+
+    @keyframes gentleSway {
+      0%, 100% { transform: rotate(-5deg) translateY(0); }
+      50% { transform: rotate(5deg) translateY(-5px); }
+    }
+
+    /* Main Card */
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      z-index: 10;
+      width: 90%;
+      max-width: 450px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: var(--deep-pink);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      color: var(--deep-blue);
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .btn {
+      padding: 15px 35px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--deep-pink), var(--deep-blue));
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(255, 143, 177, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .btn:hover { transform: scale(1.05); }
+
+    /* Letter Overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .popup {
+      background: #fff;
+      width: 90%;
+      max-width: 500px;
+      max-height: 75vh;
+      padding: 30px;
+      border-radius: 25px;
+      position: relative;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    }
+
+    .close {
+      position: sticky;
+      top: 0;
+      float: right;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--deep-pink);
+      font-weight: bold;
+      z-index: 101;
+    }
+
+    .letter {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      color: #444;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Happy 7th Anniversary!</h1>
+    <h2>My Baccha 💕</h2>
+    <button class="btn" onclick="openLetter()">For you 💌</button>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="popup" id="popupContainer">
+      <span class="close" onclick="closeLetter()">×</span>
+      <div class="letter" id="letter"></div>
+    </div>
+  </div>
+
+  <script>
+    // 1. Generate Classical Hollow Hearts
+    const colors = ['#ff8fb1', '#7cc7ff', '#ffffff'];
+    for (let i = 0; i < 15; i++) {
+      const container = document.createElement('div');
+      container.className = 'heart-container';
+      
+      // Classic smooth heart shape path
+      container.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="${colors[i % 3]}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+        </svg>
+      `;
+      
+      container.style.left = Math.random() * 90 + 'vw';
+      container.style.top = Math.random() * 90 + 'vh';
+      container.style.animationDelay = (Math.random() * 5) + 's';
+      container.style.width = (25 + Math.random() * 20) + 'px';
+      document.body.appendChild(container);
+    }
+
+    // 2. Spread Tulips Evenly using a Grid
+    const rows = 3;
+    const cols = 4;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const tulip = document.createElement('div');
+        tulip.className = 'tulip';
+        tulip.innerText = '🌷';
+        
+        // Calculate position based on grid + a little "jitter" for natural feel
+        const leftBase = (100 / cols) * c + (100 / (cols * 2));
+        const topBase = (100 / rows) * r + (100 / (rows * 2));
+        const jitterX = (Math.random() - 0.5) * 10; 
+        const jitterY = (Math.random() - 0.5) * 10;
+
+        tulip.style.left = (leftBase + jitterX) + 'vw';
+        tulip.style.top = (topBase + jitterY) + 'vh';
+        tulip.style.animationDelay = Math.random() * 4 + 's';
+        
+        document.body.appendChild(tulip);
+      }
+    }
+
+    const text = `Hi love of my life,
+Ik we’ve been dating for quite a while now, but it still feels so unreal and magical. I still have a huge crush on you, and will keep crushing on you for the rest of my life. I never thought I could ever get a partner like you. Just being with you feels so great…. I can’t even express  this feeling in words.You have always made me feel special, wanted, and truly loved. It’s only because of you that I know what love feels like, what it really means to be in a relationship. I’ve told you before that I don’t feel emotions or affection easily towards anyone, but with you it’s completely different. Somehow deep down I just know you’re the one and I want to be with you for the rest of my life.
+This is a really hard time for us…the long distance and the fights we’ve had in the past few months all cuz of me and I’m truly sorry for that. I’m so grateful to you for not giving up on us and for loving me the way you do. Thank you for tolerating me and for always choosing us above everything else.
+I promise you all of this will be worth it. One day we’ll marry each other and have a family of our own and have two cute babies just like you. I honestly can’t wait for the day when we’ll finally be together. I just want this long distance to end as soon as possible.
+Please bear with me not just for a little longer, but for the rest of our lives and keep loving me the way you do. I promise to do the same.
+Love you, my sweetheart.🩵`;
+
+    let index = 0;
+    let timer;
+
+    function openLetter() {
+      document.getElementById('overlay').style.display = 'flex';
+      document.getElementById('letter').innerText = '';
+      index = 0;
+      typeWriter();
+    }
+
+    function closeLetter() {
+      document.getElementById('overlay').style.display = 'none';
+      clearTimeout(timer);
+    }
+
+    function typeWriter() {
+      if (index < text.length) {
+        const letterDiv = document.getElementById('letter');
+        const popup = document.getElementById('popupContainer');
+        letterDiv.innerText += text.charAt(index);
+        index++;
+        popup.scrollTop = popup.scrollHeight; 
+        timer = setTimeout(typeWriter, 55);
+      }
+    }
+  </script>
+
+</body>
+</html>
